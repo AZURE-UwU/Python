@@ -1,0 +1,146 @@
+:root {
+  --bg: #ffffff;
+  --fg: #1f2328;
+  --muted: #57606a;
+  --border: #d0d7de;
+  --code-bg: #f6f8fa;
+  --code-fg: #b31d28;
+  --quote-bg: #f6f8fa;
+  --table-head: #f2f4f7;
+  --table-zebra: #fafbfc;
+  --link: #0969da;
+  --heading: #1f3864;
+  --heading2: #2f5496;
+}
+
+body.dark {
+  --bg: #14171a;
+  --fg: #e6edf3;
+  --muted: #9198a1;
+  --border: #30363d;
+  --code-bg: #1b1f24;
+  --code-fg: #ff7b72;
+  --quote-bg: #1b1f24;
+  --table-head: #21262d;
+  --table-zebra: #1a1e23;
+  --link: #4493f8;
+  --heading: #9ecbff;
+  --heading2: #79b8ff;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Segoe UI", "Microsoft YaHei UI", "等线", system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+#content {
+  padding: 20px 28px 60px;
+  max-width: 900px;
+  margin: 0 auto;
+  word-wrap: break-word;
+}
+
+#content.empty::before {
+  content: "预览区域：在左侧输入 Markdown，这里会实时显示渲染结果。";
+  color: var(--muted);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--heading);
+  font-weight: 600;
+  line-height: 1.35;
+  margin: 1.4em 0 0.6em;
+}
+
+h1 { font-size: 1.9em; border-bottom: 2px solid var(--border); padding-bottom: 0.25em; }
+h2 { font-size: 1.55em; }
+h3 { font-size: 1.32em; }
+h4 { font-size: 1.16em; color: var(--heading2); }
+h5 { font-size: 1.04em; color: var(--heading2); }
+h6 { font-size: 1em; color: var(--muted); }
+
+p { margin: 0.75em 0; }
+
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code {
+  font-family: "Cascadia Mono", Consolas, "Courier New", monospace;
+  font-size: 0.9em;
+  background: var(--code-bg);
+  border-radius: 4px;
+  padding: 0.15em 0.35em;
+  color: var(--code-fg);
+}
+
+pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px 14px;
+  overflow-x: auto;
+}
+
+pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+  font-size: 0.88em;
+  line-height: 1.55;
+}
+
+blockquote {
+  margin: 1em 0;
+  padding: 0.4em 1em;
+  border-left: 4px solid var(--border);
+  background: var(--quote-bg);
+  color: var(--muted);
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+  font-size: 0.95em;
+}
+
+th, td {
+  border: 1px solid var(--border);
+  padding: 6px 10px;
+  text-align: left;
+}
+
+th { background: var(--table-head); font-weight: 600; }
+tbody tr:nth-child(even) { background: var(--table-zebra); }
+
+ul, ol { padding-left: 1.6em; }
+li { margin: 0.25em 0; }
+
+li.task-list-item { list-style: none; margin-left: -1.2em; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 1.6em 0;
+}
+
+img { max-width: 100%; }
+
+.math { font-size: 1.02em; }
+div.math { text-align: center; margin: 1em 0; }
+
+.katex-error { color: #cf222e; }
+
+.footnotes {
+  margin-top: 2em;
+  border-top: 1px solid var(--border);
+  font-size: 0.9em;
+  color: var(--muted);
+}
+
+.alert { border: 1px solid var(--border); border-left: 4px solid var(--link); border-radius: 6px; padding: 0.5em 1em; }

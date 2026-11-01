@@ -1,0 +1,12 @@
+/target/
+/dist/
+/docs/superpowers/
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+/.env
+/.env.*
+!.env.example

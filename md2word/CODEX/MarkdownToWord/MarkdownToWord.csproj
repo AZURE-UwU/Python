@@ -1,0 +1,67 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows10.0.19041.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <RootNamespace>MarkdownToWord</RootNamespace>
+    <AssemblyName>MarkdownToWord</AssemblyName>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <!-- 程序图标：蓝色圆角方块 + 白色 M（+ 向下箭头），由 _tools\make-app-icon.ps1 生成 -->
+    <ApplicationIcon>Assets\app.ico</ApplicationIcon>
+    <Platforms>x64</Platforms>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <UseWinUI>true</UseWinUI>
+    <WindowsPackageType>None</WindowsPackageType>
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+    <SelfContained>false</SelfContained>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <NoWarn>$(NoWarn);CA1416</NoWarn>
+    <DefineConstants>$(DefineConstants);DISABLE_XAML_GENERATED_MAIN</DefineConstants>
+    <!-- 只保留中文/英文资源，避免发布目录塞满几十种语言的卫星程序集 -->
+    <SatelliteResourceLanguages>zh-Hans;zh-Hant;en</SatelliteResourceLanguages>
+  </PropertyGroup>
+
+  <!--
+    单文件发布（-p:SingleFilePublish=true）：
+    Windows App SDK 的 Microsoft.WindowsAppSDK.SingleFile.targets 要求这几个开关同时成立，
+    少一个就会在 PrepareForBuild 阶段直接报错。默认不开启，普通散文件发布不受影响。
+  -->
+  <PropertyGroup Condition="'$(SingleFilePublish)' == 'true'">
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+    <EnableMsixTooling>true</EnableMsixTooling>
+    <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+    <WindowsAppSdkUndockedRegFreeWinRTInitialize>true</WindowsAppSdkUndockedRegFreeWinRTInitialize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.8.260804001" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.4654" />
+    <PackageReference Include="Markdig" Version="1.4.0" />
+    <PackageReference Include="DocumentFormat.OpenXml" Version="3.5.1" />
+  </ItemGroup>
+
+  <!--
+    dotnet publish 对"非打包 WinUI3"会漏掉 XAML 编译产物（*.xbf）与资源索引（*.pri），
+    缺了它们应用一启动就崩（0xC000027B）。这里把构建输出整体补齐到发布目录。
+  -->
+  <Target Name="SyncWinUiPublishOutput" AfterTargets="Publish" Condition="'$(PublishSingleFile)' != 'true'">
+    <ItemGroup>
+      <!--
+        注意 Exclude 里的 $(PublishDir)：发布目录在 $(OutDir) 里面，
+        不排除掉的话每次发布都会把上一次的 publish 整棵子树再拷进自己，层层套娃。
+      -->
+      <BuildOutputFile Include="$(OutDir)**\*"
+                       Exclude="$(OutDir)**\*.pdb;$(OutDir)**\*.exe.WebView2\**;$(PublishDir)**\*" />
+    </ItemGroup>
+    <Copy
+      SourceFiles="@(BuildOutputFile)"
+      DestinationFiles="@(BuildOutputFile->'$(PublishDir)%(RecursiveDir)%(Filename)%(Extension)')"
+      SkipUnchangedFiles="true" />
+  </Target>
+
+</Project>

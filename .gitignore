@@ -1,0 +1,25 @@
+# 本地凭据
+**/apikey.txt
+**/.env
+**/.env.*
+
+# 依赖、缓存与构建产物
+**/__pycache__/
+**/node_modules/
+**/pylibs/
+**/[Bb]in/
+**/[Oo]bj/
+**/[Dd]ist/
+**/publish/
+**/target/
+**/BACKUP/
+**/_output/
+**/*.py[cod]
+**/*.pdb
+**/*.dll
+**/*.exe
+**/*.obj
+**/*.o
+
+# 含本机凭据的迁移工作目录
+codex-migrate-main/CODEX/

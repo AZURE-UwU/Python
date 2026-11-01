@@ -1,0 +1,21 @@
+﻿磁盘管理器自测开始：2026-09-17 16:15:25
+管理员权限：否
+测试磁盘文件：C:\Users\AZURE\Documents\ChatGPT\swap\TestDisks\dm-selftest.vhdx
+=== 虚拟磁盘文件扫描 ===
+  A:\VHDX\BACKUP\OLD\Win11ProW X64 430GB.vhdx
+      占用=False　占用进程=（未检测到）　取物理路径失败（0x00000037）　物理路径=（未挂载）
+  A:\VHDX\NEW\CHN\Win11ProW X64.vhdx
+      占用=False　占用进程=（未检测到）　取物理路径失败（0x00000037）　物理路径=（未挂载）
+  A:\VHDX\NEW\ENG\Win11ProW X64.vhdx
+      占用=False　占用进程=（未检测到）　取物理路径失败（0x00000037）　物理路径=（未挂载）
+  A:\VHDX\USED\ENG\Win11ProW X64.vhdx
+      占用=True　占用进程=System (PID 4)　OpenVirtualDisk 失败（0x00000005）　物理路径=（未挂载）
+  A:\VHDX\BACKUP\ENG\9.15\Win11ProW X64.vhdx
+      占用=False　占用进程=（未检测到）　取物理路径失败（0x00000037）　物理路径=（未挂载）
+  B:\GAMEs.vhdx
+      占用=False　占用进程=（未检测到）　取物理路径失败（0x00000037）　物理路径=（未挂载）
+  C:\Program Files\WSL\system.vhd
+      占用=True　占用进程=System (PID 4)　取物理路径失败（0x00000037）　物理路径=（未挂载）
+  C:\Program Files\WSL\tools\modules.vhd
+      占用=True　占用进程=System (PID 4)　取物理路径失败（0x00000037）　物理路径=（未挂载）
+共扫描到 8 个虚拟磁盘文件。

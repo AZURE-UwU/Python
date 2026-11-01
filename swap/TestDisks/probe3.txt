@@ -1,0 +1,20 @@
+﻿line1 admin=True
+line2 vds=Stopped
+line3 diskpart exit=0
+line4 output:
+
+Microsoft DiskPart 版本 10.0.26100.1150
+
+Copyright (C) Microsoft Corporation.
+在计算机上: AZURE
+
+line5 disks:
+
+Number FriendlyName            BusType                      Size OperationalStatus
+------ ------------            -------                      ---- -----------------
+     2 Msft Virtual Disk       File Backed Virtual  461708984320 Online           
+     1 MICRON B17A M2          NVMe                2000398934016 Online           
+     0 SKHynix_HFS002TFM9X178N NVMe                2048408248320 Online           
+
+
+

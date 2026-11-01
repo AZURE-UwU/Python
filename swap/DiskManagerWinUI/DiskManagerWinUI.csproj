@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    磁盘管理器 · WinUI 3 版（主程序的现代化外观版本）
+
+    与 WPF 版的关系：
+      · 磁盘逻辑（Interop / Models / Services）**共用同一份源码**，只重写界面层；
+      · 两套界面可以并存，行为完全一致（都受同一套安全闸门约束）。
+
+    调试开关：
+      · dotnet build -t:Rebuild -p:NoAdmin=true   只验证界面（asInvoker 清单）
+      · DiskManagerWinUI.exe 加 demo 开关        用内置的假数据填充界面，方便调 UI（无需提权）
+  -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows10.0.19041.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <RootNamespace>DiskManagerWinUI</RootNamespace>
+    <ApplicationManifest Condition="'$(NoAdmin)' != 'true'">app.manifest</ApplicationManifest>
+    <ApplicationManifest Condition="'$(NoAdmin)' == 'true'">app.invoker.manifest</ApplicationManifest>
+    <Platforms>x64</Platforms>
+    <RuntimeIdentifiers>win-x64</RuntimeIdentifiers>
+    <UseWinUI>true</UseWinUI>
+    <WindowsPackageType>None</WindowsPackageType>
+    <WindowsAppSDKSelfContained>false</WindowsAppSDKSelfContained>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>DiskManagerWinUI</AssemblyName>
+    <Product>磁盘管理器</Product>
+    <AssemblyTitle>磁盘管理器</AssemblyTitle>
+    <Version>1.0.0</Version>
+    <SatelliteResourceLanguages>zh-Hans</SatelliteResourceLanguages>
+  </PropertyGroup>
+
+  <!-- 共用主程序已验证的磁盘逻辑 -->
+  <ItemGroup>
+    <Compile Include="..\DiskManager\Interop\*.cs" LinkBase="Linked\Interop" />
+    <Compile Include="..\DiskManager\Models\*.cs" LinkBase="Linked\Models" />
+    <Compile Include="..\DiskManager\Services\*.cs" LinkBase="Linked\Services" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.8.260804001" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.4654" />
+    <PackageReference Include="System.Management" Version="10.0.12" />
+  </ItemGroup>
+
+</Project>

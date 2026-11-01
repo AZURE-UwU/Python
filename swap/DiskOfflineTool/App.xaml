@@ -1,0 +1,48 @@
+<Application x:Class="DiskOfflineTool.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+  <Application.Resources>
+    <SolidColorBrush x:Key="GridHeaderBackground" Color="#F5F6F8" />
+    <SolidColorBrush x:Key="GridLineBrush" Color="#D5DAE0" />
+    <SolidColorBrush x:Key="SelectionBrush" Color="#CCE4F7" />
+
+    <Style TargetType="Window">
+      <Setter Property="FontFamily" Value="Microsoft YaHei UI" />
+      <Setter Property="FontSize" Value="12.5" />
+      <Setter Property="Background" Value="#F0F0F0" />
+    </Style>
+
+    <Style TargetType="DataGridColumnHeader">
+      <Setter Property="Background" Value="{StaticResource GridHeaderBackground}" />
+      <Setter Property="BorderBrush" Value="{StaticResource GridLineBrush}" />
+      <Setter Property="BorderThickness" Value="0,0,1,1" />
+      <Setter Property="Padding" Value="8,5,8,5" />
+      <Setter Property="FontWeight" Value="Normal" />
+      <Setter Property="HorizontalContentAlignment" Value="Left" />
+    </Style>
+
+    <Style TargetType="DataGridRow">
+      <Setter Property="Background" Value="White" />
+      <Setter Property="Height" Value="26" />
+      <Style.Triggers>
+        <Trigger Property="IsSelected" Value="True">
+          <Setter Property="Background" Value="{StaticResource SelectionBrush}" />
+          <Setter Property="Foreground" Value="Black" />
+        </Trigger>
+      </Style.Triggers>
+    </Style>
+
+    <Style TargetType="DataGridCell">
+      <Setter Property="BorderThickness" Value="0" />
+      <Setter Property="Padding" Value="8,0,8,0" />
+      <Setter Property="VerticalContentAlignment" Value="Center" />
+      <Style.Triggers>
+        <Trigger Property="IsSelected" Value="True">
+          <Setter Property="Background" Value="{StaticResource SelectionBrush}" />
+          <Setter Property="Foreground" Value="Black" />
+        </Trigger>
+      </Style.Triggers>
+    </Style>
+  </Application.Resources>
+</Application>

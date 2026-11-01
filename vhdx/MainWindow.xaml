@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="VhdxCopier.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="VHDX 快照复制">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Padding="28">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Spacing="4">
+            <TextBlock Text="VHDX 快照复制" FontSize="28" FontWeight="SemiBold" />
+            <TextBlock
+                Text="源文件未被占用时直接复制；被占用时从 VSS 只读快照复制，避免复制出撕裂的 VHDX。"
+                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                TextWrapping="Wrap" />
+        </StackPanel>
+
+        <Grid Grid.Row="1" Margin="0,20,0,0" ColumnSpacing="12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Spacing="6">
+                <TextBlock Text="源 VHDX" FontWeight="SemiBold" />
+                <TextBox
+                    x:Name="SourcePathBox"
+                    IsReadOnly="True"
+                    PlaceholderText="选择 .vhdx 文件" />
+            </StackPanel>
+            <Button
+                x:Name="PickSourceButton"
+                Grid.Column="1"
+                Content="选择 VHDX"
+                Click="PickSourceButton_Click"
+                VerticalAlignment="Bottom" />
+        </Grid>
+
+        <Grid Grid.Row="2" Margin="0,16,0,0" ColumnSpacing="12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Spacing="6">
+                <TextBlock Text="目标位置" FontWeight="SemiBold" />
+                <TextBox
+                    x:Name="DestinationPathBox"
+                    IsReadOnly="True"
+                    PlaceholderText="选择目标文件夹" />
+            </StackPanel>
+            <Button
+                x:Name="PickDestinationButton"
+                Grid.Column="1"
+                Content="选择位置"
+                Click="PickDestinationButton_Click"
+                VerticalAlignment="Bottom" />
+        </Grid>
+
+        <CheckBox
+            x:Name="UseVssCheckBox"
+            Grid.Row="3"
+            Margin="0,16,0,0"
+            IsChecked="True"
+            Content="源文件被占用时自动创建 VSS 快照（需要管理员权限）" />
+
+        <StackPanel Grid.Row="4" Margin="0,18,0,0" Spacing="8">
+            <ProgressBar
+                x:Name="CopyProgressBar"
+                Minimum="0"
+                Maximum="100"
+                Height="8" />
+            <Grid ColumnSpacing="12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    x:Name="StatusText"
+                    Text="请选择源 VHDX 和目标位置。"
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    x:Name="DetailText"
+                    Grid.Column="1"
+                    Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
+            </Grid>
+        </StackPanel>
+
+        <InfoBar
+            x:Name="ResultInfoBar"
+            Grid.Row="5"
+            Margin="0,18,0,0"
+            VerticalAlignment="Top"
+            IsOpen="False"
+            IsClosable="True"
+            Severity="Informational"
+            Title=""
+            Message="" />
+
+        <StackPanel
+            Grid.Row="6"
+            Orientation="Horizontal"
+            Spacing="12"
+            Margin="0,20,0,0">
+            <Button
+                x:Name="StartButton"
+                Content="开始复制"
+                Click="StartButton_Click"
+                Style="{StaticResource AccentButtonStyle}"
+                IsEnabled="False"
+                MinWidth="120" />
+            <Button
+                x:Name="CancelButton"
+                Content="取消"
+                Click="CancelButton_Click"
+                IsEnabled="False"
+                MinWidth="96" />
+        </StackPanel>
+    </Grid>
+</Window>
