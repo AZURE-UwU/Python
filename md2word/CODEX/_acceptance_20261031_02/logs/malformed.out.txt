@@ -1,4 +1,0 @@
-已生成：C:\Users\AZURE\Desktop\Project\小工具\md2word\CODEX\_acceptance_20261031_02\outputs\malformed.docx
-标题 1｜段落 0｜列表 0｜表格 0｜代码块 1｜公式 0｜图片 0｜脚注 0
-
-OOXML 校验：通过（无错误）

@@ -1,7 +1,0 @@
-﻿=== probe6 00:12:59 ===
-test disk = 3 style=MBR
-partition created #2 offset=268500992 size=268435456
-letter before format: OK
-format via -Partition: OK
-letter after format FAILED: The requested access path is already in use.
-Activity ID: {28cccc87-45f0-0011-0281-cd28f045dd01}

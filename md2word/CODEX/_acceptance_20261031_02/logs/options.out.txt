@@ -1,4 +1,0 @@
-已生成：C:\Users\AZURE\Desktop\Project\小工具\md2word\CODEX\_acceptance_20261031_02\outputs\options.docx
-标题 9｜段落 59｜列表 6｜表格 1｜代码块 4｜公式 0｜图片 1｜脚注 2
-
-OOXML 校验：通过（无错误）

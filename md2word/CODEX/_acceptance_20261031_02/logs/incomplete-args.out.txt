@@ -1,4 +1,0 @@
-Markdown to Word 离线版 — 命令行模式
-用法：MarkdownToWord.exe --convert <input.md> <output.docx> [选项]
-选项：--no-math --no-highlight --no-remote --number-headings --page=A4 --margin=2.54
-      MarkdownToWord.exe --copy <input.md> [--copy-as=text|doc] [--hold=秒]

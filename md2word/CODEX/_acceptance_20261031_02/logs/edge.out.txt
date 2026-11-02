@@ -1,5 +1,0 @@
-已生成：C:\Users\AZURE\Desktop\Project\小工具\md2word\CODEX\_acceptance_20261031_02\outputs\edge.docx
-标题 1｜段落 9｜列表 0｜表格 1｜代码块 1｜公式 2｜图片 0｜脚注 0
-警告：找不到本地图片：C:\Users\AZURE\Desktop\Project\小工具\md2word\CODEX\_acceptance_20261031_01\inputs\missing-image.png
-
-OOXML 校验：通过（无错误）

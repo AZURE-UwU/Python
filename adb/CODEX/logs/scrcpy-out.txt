@@ -1,6 +1,0 @@
-scrcpy 3.3.3 <https://github.com/Genymobile/scrcpy>
-INFO: ADB device found:
-INFO:     --> (tcpip)  10.42.0.131:36549               device  24129PN74C
-[server] INFO: Device: [Xiaomi] Xiaomi 24129PN74C (Android 16)
-INFO: Renderer: direct3d
-INFO: Texture: 1200x2664

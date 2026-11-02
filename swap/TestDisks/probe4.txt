@@ -1,6 +1,0 @@
-﻿=== probe4 00:05:08 ===
-admin=True
-disk 2: name=Msft Virtual Disk bus=File Backed Virtual size=461708984320 style=GPT off=False ro=False op=Online
-disk 1: name=MICRON B17A M2 bus=NVMe size=2000398934016 style=GPT off=False ro=False op=Online
-disk 0: name=SKHynix_HFS002TFM9X178N bus=NVMe size=2048408248320 style=GPT off=False ro=False op=Online
-no test disk found
